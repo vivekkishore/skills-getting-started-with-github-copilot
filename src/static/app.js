@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  const toggleDarkModeButton = document.getElementById("toggle-dark-mode");
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -83,6 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
       messageDiv.classList.remove("hidden");
       console.error("Error signing up:", error);
     }
+  });
+
+  toggleDarkModeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.querySelector("header").classList.toggle("dark-mode");
+    document.querySelectorAll("section").forEach(section => section.classList.toggle("dark-mode"));
+    document.querySelectorAll(".activity-card").forEach(card => card.classList.toggle("dark-mode"));
+    document.querySelectorAll("button").forEach(button => button.classList.toggle("dark-mode"));
+    toggleDarkModeButton.classList.toggle("dark-mode");
   });
 
   // Initialize app
